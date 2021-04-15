@@ -98,7 +98,7 @@ async function CloseNavbar() {
 }
 
 async function ToggleNavbar() {
-  await SetNavbar(!open);
+  await SetNavbar(!navOpen);
 }
 
 
