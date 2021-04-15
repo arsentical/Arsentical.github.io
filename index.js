@@ -6,7 +6,7 @@
  * @param {EventListenerOrEventListenerObject} func - callback function
  */
  function RegisterEvent(id, event, func) {
-  const e = document.getElementById(id);
+  var e = document.getElementById(id);
   if (e) {
     e.addEventListener(event, func);
   } else {
@@ -20,10 +20,10 @@
  * @param {[keyof HTMLElementEventMap, EventListenerOrEventListenerObject][]} events - list of name-callback pairs
  */
 function RegisterEvents(id, events) {
-  const e = document.getElementById(id);
+  var e = document.getElementById(id);
   if (e) {
-    for (let i = 0; i < events.length; i++) {
-      const event = events[i];
+    for (var i = 0; i < events.length; i++) {
+      var event = events[i];
       if (event) e.addEventListener(event[0], event[1]);
     }
   } else {
@@ -37,7 +37,7 @@ function RegisterEvents(id, events) {
  * @returns {HTMLElement} html element
  */
 function EID(id) {
-  const e = document.getElementById(id);
+  var e = document.getElementById(id);
   if (e) {
     return e;
   } else {
@@ -45,60 +45,44 @@ function EID(id) {
   }
 }
 
-/**
- * async delay
- * @param {number} ms - milliseconds to wait
- * @returns {Promise<void>}
- */
-function Delay(ms) {
-  return new Promise(y => setTimeout(y, ms));
-}
-
-
-let animationCounter = 0;
-let navOpen = false;
+var animationCounter = 0;
+var navOpen = false;
 
 /**
  * @param {boolean} state - new state
  */
-async function SetNavbar(state) {
+function SetNavbar(state) {
   if (navOpen === state) return;
-  let currentAnimation = animationCounter = Math.random();
-  const e1 = EID(`ui-nav`);
-  const e2 = EID(`ui-breadcrumb`);
-  const e3 = EID(`ui-pages`);
+  var currentAnimation = animationCounter = Math.random();
+  var e1 = EID(`ui-nav`);
+  var e2 = EID(`ui-breadcrumb`);
+  var e3 = EID(`ui-pages`);
   navOpen = state;
   e1.classList.add(`animating`);
   e2.classList.add(`animating`);
   e3.classList.add(`animating`);
-  await Delay(0);
-  if (animationCounter !== currentAnimation) return;
-  if (navOpen) {
-    e1.classList.add(`open`);
-    e2.classList.add(`open`);
-    e3.classList.add(`open`);
-  } else {
-    e1.classList.remove(`open`);
-    e2.classList.remove(`open`);
-    e3.classList.remove(`open`);
-  }
-  await Delay(250);
-  if (animationCounter !== currentAnimation) return;
-  e1.classList.remove(`animating`);
-  e2.classList.remove(`animating`);
-  e3.classList.remove(`animating`);
+  setTimeout(function () {
+    if (animationCounter !== currentAnimation) return;
+    if (navOpen) {
+      e1.classList.add(`open`);
+      e2.classList.add(`open`);
+      e3.classList.add(`open`);
+    } else {
+      e1.classList.remove(`open`);
+      e2.classList.remove(`open`);
+      e3.classList.remove(`open`);
+    }
+    setTimeout(function () {
+      if (animationCounter !== currentAnimation) return;
+      e1.classList.remove(`animating`);
+      e2.classList.remove(`animating`);
+      e3.classList.remove(`animating`);
+    }, 250);
+  }, 0);
 }
 
-async function OpenNavbar() {
-  await SetNavbar(true);
-}
-
-async function CloseNavbar() {
-  await SetNavbar(false);
-}
-
-async function ToggleNavbar() {
-  await SetNavbar(!navOpen);
+function ToggleNavbar() {
+  SetNavbar(!navOpen);
 }
 
 
