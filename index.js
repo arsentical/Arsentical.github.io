@@ -56,24 +56,24 @@ function Delay(ms) {
 
 
 let animationCounter = 0;
-let open = false;
+let navOpen = false;
 
 /**
  * @param {boolean} state - new state
  */
-export async function SetNavbar(state) {
-  if (open === state) return;
+async function SetNavbar(state) {
+  if (navOpen === state) return;
   let currentAnimation = animationCounter = Math.random();
   const e1 = EID(`ui-nav`);
   const e2 = EID(`ui-breadcrumb`);
   const e3 = EID(`ui-pages`);
-  open = state;
+  navOpen = state;
   e1.classList.add(`animating`);
   e2.classList.add(`animating`);
   e3.classList.add(`animating`);
   await Delay(0);
   if (animationCounter !== currentAnimation) return;
-  if (open) {
+  if (navOpen) {
     e1.classList.add(`open`);
     e2.classList.add(`open`);
     e3.classList.add(`open`);
@@ -89,15 +89,15 @@ export async function SetNavbar(state) {
   e3.classList.remove(`animating`);
 }
 
-export async function OpenNavbar() {
+async function OpenNavbar() {
   await SetNavbar(true);
 }
 
-export async function CloseNavbar() {
+async function CloseNavbar() {
   await SetNavbar(false);
 }
 
-export async function ToggleNavbar() {
+async function ToggleNavbar() {
   await SetNavbar(!open);
 }
 
