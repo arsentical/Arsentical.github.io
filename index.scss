@@ -1,0 +1,283 @@
+@import "./helveticanew.scss";
+
+@mixin noselect {
+  /* ios */  -webkit-touch-callout: none;
+  /* safari */ -webkit-user-select: none;
+  /* khtml */   -khtml-user-select: none;
+  /* old ff */    -moz-user-select: none;
+  /* old ie */     -ms-user-select: none;
+  /* modern web */     user-select: none;
+}
+
+:root {
+  --col-bg-1: #0A0A0A;
+  --col-bg-2: #111111;
+  --col-bg-3: #1F1F1F;
+  --col-bg-4: #343434;
+  --col-bg-5: #505050;
+  --col-bg-6: #ffffff;
+  --col-fg-1: #ffffff;
+  --col-fg-2: #000000;
+  --col-link: #4A86E8;
+  font-family: "Helvetica New";
+  font-size: 16px;
+}
+
+.padding-text {
+  display: inline-block;
+  background-color: var(--col-bg-6);
+  color: var(--col-fg-2);
+  padding: 0.25rem;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  background-color: var(--col-bg-1);
+  color: var(--col-fg-1);
+  > .nav {
+    @include noselect();
+    background-color: var(--col-bg-3);
+    height: 4rem;
+    width: 100vw;
+    &.animating {
+      transition-property: width;
+      transition-duration: 250ms;
+      > .page-container {
+        transition-property: transform;
+        transition-duration: 250ms;
+      }
+    }
+    &.open {
+      width: 12rem;
+      > .page-container {
+        transform: translateX(0);
+      }
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    > .nav-name {
+      display: inline-block;
+      font-size: 2rem;
+      width: 12rem;
+      line-height: 3.75rem;
+      text-align: center;
+      z-index: 104;
+      position: relative;
+      > span {
+        background-color: var(--col-bg-3);
+      }
+    }
+    > .nav-name-padding {
+      position: relative;
+      z-index: 103;
+      background-color: var(--col-bg-3);
+      width: 8rem;
+      height: 4rem;
+      margin-bottom: -4rem;
+    }
+    > .breadcrumb {
+      z-index: 102;
+      position: relative;
+      display: inline-block;
+      margin-left: -2rem;
+      transform: translateX(0);
+      &.animating {
+        transition-property: transform;
+        transition-duration: 250ms;
+      }
+      &.open {
+        transform: translateX(-100%);
+      }
+      > li, > a {
+        display: inline;
+        &::before {
+          content: "/ ";
+        }
+        &:last-child {
+          font-weight: bold;
+        }
+        > .button {
+          &:hover:not(:active) {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    > .page-container {
+      transform: translateX(-1rem);
+      overflow: hidden;
+      overflow-y: auto;
+      position: fixed;
+      width: 100vw;
+      height: calc(100vh - 4rem);
+      direction: rtl;
+      > .pages {
+        direction: ltr;
+        z-index: 105;
+        list-style-type: none;
+        background-color: var(--col-bg-3);
+        width: 9rem;
+        padding-left: 3rem;
+        position: relative;
+        left: calc(12rem - 100vw);
+        min-height: calc(100vh - 6rem);
+        transform: translateX(-13rem);
+        &.animating {
+          transition-property: transform;
+          transition-duration: 250ms;
+          li, a {
+            transition-property: margin-left;
+            transition-duration: 250ms;
+          }
+        }
+        &.open {
+          transform: translateX(0);
+          > .button {
+            margin-left: -2rem;
+          }
+          > .sub-page > ul > .button {
+            margin-left: -1rem;
+          }
+        }
+        > .bg {
+          background-color: var(--col-bg-3);
+          width: 12rem;
+          height: 1rem;
+          position: fixed;
+          left: 0;
+          top: -1rem;
+        }
+        > .bg-end {
+          background-color: var(--col-bg-3);
+          width: 12rem;
+          height: 1rem;
+          position: fixed;
+          left: 0;
+          bottom: -1rem;
+        }
+        > .button {
+          background-color: var(--col-bg-4);
+          margin-left: -3.5rem;
+          font-size: 1.5rem;
+          padding: 0.5rem;
+          margin-top: 1rem;
+          width: 12.5rem;
+          &:hover:not(:active) {
+            background-color: var(--col-bg-5);
+          }
+        }
+        a {
+          display: block;
+        }
+        > .sub-page > ul {
+          margin-left: -2rem;
+          list-style-type: none;
+          > .button {
+            background-color: var(--col-bg-4);
+            margin-left: -2.5rem;
+            padding: 0.25rem;
+            margin-top: 1rem;
+            width: 11.5rem;
+            &:hover:not(:active) {
+              background-color: var(--col-bg-5);
+            }
+          }
+        }
+      }
+    }
+  }
+  > .content {
+    > .header {
+      height: 14rem;
+      background-position: 50% 50%;
+      background-size: cover;
+      &.background-sunset {
+        background-image: url("./assets/background-sunset.jpg");
+      }
+    }
+    > .page-frame {
+      background-color: var(--col-bg-2);
+      > .page-content {
+        box-sizing: border-box;
+        padding: 1rem;
+        padding-top: 0;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        min-height: calc(100vh - 17.5rem);
+        @media only screen and (max-width: 600px) {
+          min-height: calc(100vh - 21.5rem);
+        }
+        @media only screen and (min-width: 800px) {
+          width: 800px;
+        }
+        @media only screen and (min-width: 1600px) {
+          width: 50vw;
+        }
+      }
+    }
+    > .footer {
+      text-align: center;
+      padding: 1rem 0;
+      line-height: 1;
+      font-style: italic;
+      white-space: nowrap;
+      overflow: hidden;
+      @media only screen and (max-width: 600px) {
+        .footer-br {
+          display: block;
+        }
+        .footer-slash {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+noscript {
+  position: fixed;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &.link {
+    color: var(--col-link);
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 1rem;
+  margin-top: 0;
+  margin-bottom: -1rem;
+}
+
+.page-subtitle {
+  text-align: center;
+  font-style: italic;
+}
