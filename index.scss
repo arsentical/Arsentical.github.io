@@ -42,9 +42,35 @@ body {
     background-color: var(--col-bg-3);
     height: 4rem;
     width: 100vw;
+    &::before {
+      content: "";
+      width: calc(100vw - 12rem);
+      height: 100vh;
+      background-color: #00000000;
+      position: fixed;
+      top: 4rem;
+      right: 0;
+    }
+    &::after {
+      content: "";
+      width: 0;
+      height: 4rem;
+      background-color: #00000000;
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
     &.animating {
       transition-property: width;
       transition-duration: 250ms;
+      &::before {
+        transition-property: background-color;
+        transition-duration: 250ms;
+      }
+      &::after {
+        transition-property: background-color, width;
+        transition-duration: 250ms;
+      }
       > .page-container {
         transition-property: transform;
         transition-duration: 250ms;
@@ -54,6 +80,13 @@ body {
       width: 12rem;
       > .page-container {
         transform: translateX(0);
+      }
+      &::before {
+        background-color: #0000007F;
+      }
+      &::after {
+        background-color: #0000007F;
+        width: calc(100vw - 12rem);
       }
     }
     position: fixed;
@@ -75,7 +108,7 @@ body {
     > .nav-name-padding {
       position: relative;
       z-index: 103;
-      background-color: var(--col-bg-3);
+      // background-color: var(--col-bg-3);
       width: 8rem;
       height: 4rem;
       margin-bottom: -4rem;
@@ -113,9 +146,18 @@ body {
       overflow: hidden;
       overflow-y: auto;
       position: fixed;
+      top: 4rem;
       width: 100vw;
       height: calc(100vh - 4rem);
       direction: rtl;
+      pointer-events: none;
+      &.animating {
+        transition-property: background-color;
+        transition-duration: 250ms;
+      }
+      &.open {
+        pointer-events: unset;
+      }
       > .pages {
         direction: ltr;
         z-index: 105;
@@ -223,6 +265,7 @@ body {
       }
     }
     > .footer {
+      @include noselect();
       text-align: center;
       padding: 1rem 0;
       line-height: 1;

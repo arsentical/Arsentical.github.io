@@ -63,8 +63,34 @@ body {
   left: 0;
   white-space: nowrap;
 }
+.app > .nav::before {
+  content: "";
+  width: calc(100vw - 12rem);
+  height: 100vh;
+  background-color: #00000000;
+  position: fixed;
+  top: 4rem;
+  right: 0;
+}
+.app > .nav::after {
+  content: "";
+  width: 0;
+  height: 4rem;
+  background-color: #00000000;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
 .app > .nav.animating {
   transition-property: width;
+  transition-duration: 250ms;
+}
+.app > .nav.animating::before {
+  transition-property: background-color;
+  transition-duration: 250ms;
+}
+.app > .nav.animating::after {
+  transition-property: background-color, width;
   transition-duration: 250ms;
 }
 .app > .nav.animating > .page-container {
@@ -76,6 +102,13 @@ body {
 }
 .app > .nav.open > .page-container {
   transform: translateX(0);
+}
+.app > .nav.open::before {
+  background-color: #0000007F;
+}
+.app > .nav.open::after {
+  background-color: #0000007F;
+  width: calc(100vw - 12rem);
 }
 .app > .nav > .nav-name {
   display: inline-block;
@@ -92,7 +125,6 @@ body {
 .app > .nav > .nav-name-padding {
   position: relative;
   z-index: 103;
-  background-color: var(--col-bg-3);
   width: 8rem;
   height: 4rem;
   margin-bottom: -4rem;
@@ -128,9 +160,18 @@ body {
   overflow: hidden;
   overflow-y: auto;
   position: fixed;
+  top: 4rem;
   width: 100vw;
   height: calc(100vh - 4rem);
   direction: rtl;
+  pointer-events: none;
+}
+.app > .nav > .page-container.animating {
+  transition-property: background-color;
+  transition-duration: 250ms;
+}
+.app > .nav > .page-container.open {
+  pointer-events: unset;
 }
 .app > .nav > .page-container > .pages {
   direction: ltr;
@@ -242,6 +283,18 @@ body {
   }
 }
 .app > .content > .footer {
+  /* ios */
+  -webkit-touch-callout: none;
+  /* safari */
+  -webkit-user-select: none;
+  /* khtml */
+  -khtml-user-select: none;
+  /* old ff */
+  -moz-user-select: none;
+  /* old ie */
+  -ms-user-select: none;
+  /* modern web */
+  user-select: none;
   text-align: center;
   padding: 1rem 0;
   line-height: 1;

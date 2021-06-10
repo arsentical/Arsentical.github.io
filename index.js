@@ -5,7 +5,7 @@
  * @param {keyof HTMLElementEventMap} event - event name
  * @param {EventListenerOrEventListenerObject} func - callback function
  */
- function RegisterEvent(id, event, func) {
+ function A(id, event, func) {
   var e = document.getElementById(id);
   if (e) {
     e.addEventListener(event, func);
@@ -19,7 +19,7 @@
  * @param {string} id - element id
  * @param {[keyof HTMLElementEventMap, EventListenerOrEventListenerObject][]} events - list of name-callback pairs
  */
-function RegisterEvents(id, events) {
+function B(id, events) {
   var e = document.getElementById(id);
   if (e) {
     for (var i = 0; i < events.length; i++) {
@@ -36,7 +36,7 @@ function RegisterEvents(id, events) {
  * @param {string} id - element id
  * @returns {HTMLElement} html element
  */
-function EID(id) {
+function C(id) {
   var e = document.getElementById(id);
   if (e) {
     return e;
@@ -44,49 +44,57 @@ function EID(id) {
     throw new Error(`attempted to fetch element with id ${id}, which doesn't exist.`);
   }
 }
-
+/**
+ * @param {HTMLElement[]} e
+ * @param {number} op
+ * @param {string} cl
+ */
+function D(e, op, cl) {
+  if (op) {
+    for (var i = 0; i < e.length; i++) {
+      e[i].classList.add(cl);
+    }
+  } else {
+    for (var i = 0; i < e.length; i++) {
+      e[i].classList.remove(cl);
+    }
+  }
+}
 var animationCounter = 0;
 var navOpen = false;
 
 /**
  * @param {boolean} state - new state
  */
-function SetNavbar(state) {
+function E(state) {
   if (navOpen === state) return;
   var currentAnimation = animationCounter = Math.random();
-  var e1 = EID(`ui-nav`);
-  var e2 = EID(`ui-breadcrumb`);
-  var e3 = EID(`ui-pages`);
+  var e = [
+    C(`ui-nav`),
+    C(`ui-breadcrumb`),
+    C(`ui-pages`),
+    C(`ui-pc`)
+  ]
   navOpen = state;
-  e1.classList.add(`animating`);
-  e2.classList.add(`animating`);
-  e3.classList.add(`animating`);
+  D(e, 1, `animating`);
   setTimeout(function () {
     if (animationCounter !== currentAnimation) return;
     if (navOpen) {
-      e1.classList.add(`open`);
-      e2.classList.add(`open`);
-      e3.classList.add(`open`);
+      D(e, 1, `open`);
     } else {
-      e1.classList.remove(`open`);
-      e2.classList.remove(`open`);
-      e3.classList.remove(`open`);
+      D(e, 0, `open`);
     }
     setTimeout(function () {
       if (animationCounter !== currentAnimation) return;
-      e1.classList.remove(`animating`);
-      e2.classList.remove(`animating`);
-      e3.classList.remove(`animating`);
+      D(e, 0, `animating`);
     }, 250);
   }, 0);
 }
 
-function ToggleNavbar() {
-  SetNavbar(!navOpen);
+function F() {
+  E(!navOpen);
 }
 
-
-
-RegisterEvents(`nav-toggle`, [
-  [`click`, ToggleNavbar]
+B(`nav-toggle`, [
+  [`click`, F]
 ]);
