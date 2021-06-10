@@ -1,2 +1,2 @@
-# Arsentical.github.io
+# arsentical.github.io
 hell in a website
