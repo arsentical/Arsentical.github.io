@@ -43,6 +43,7 @@ body {
     height: 4rem;
     width: 100vw;
     &::before {
+      pointer-events: none;
       content: "";
       width: calc(100vw - 12rem);
       height: 100vh;
@@ -52,6 +53,7 @@ body {
       right: 0;
     }
     &::after {
+      pointer-events: none;
       content: "";
       width: 0;
       height: 4rem;
@@ -82,9 +84,11 @@ body {
         transform: translateX(0);
       }
       &::before {
+        pointer-events: unset;
         background-color: #0000007F;
       }
       &::after {
+        pointer-events: unset;
         background-color: #0000007F;
         width: calc(100vw - 12rem);
       }
