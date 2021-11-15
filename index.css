@@ -271,6 +271,9 @@ body {
   width: 100vw;
   min-height: calc(100vh - 17.5rem);
 }
+.app > .content > .page-frame > .page-content p:not(.page-title, .page-subtitle) {
+  font-weight: 300;
+}
 @media only screen and (max-width: 600px) {
   .app > .content > .page-frame > .page-content {
     min-height: calc(100vh - 21.5rem);

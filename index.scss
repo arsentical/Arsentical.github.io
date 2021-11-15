@@ -249,6 +249,9 @@ body {
     > .page-frame {
       background-color: var(--col-bg-2);
       > .page-content {
+        p:not(.page-title, .page-subtitle) {
+          font-weight: 300;
+        }
         box-sizing: border-box;
         padding: 1rem;
         padding-top: 0;
