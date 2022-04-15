@@ -1,4 +1,5 @@
-.scrollbanner {
+@import url("./warownia.css");
+#scrollbanner {
     /* fuck you */
     background-image: url("./assets/arsentical.png");
     background-size: cover;
@@ -10,7 +11,7 @@
     margin: 10px;
 }
 @media screen and (min-width: 420px) {
-    .scrollbanner {
+    #scrollbanner {
         background-size: contain;
     }
 }
@@ -22,11 +23,11 @@
         background-position: 0 0;
     }
 }
-.video {
+#video {
     min-width: 100%;
     min-height: 100%;
 }
-.videobox {
+#videobox {
     height: calc(100vh - 240px);
     overflow: hidden;
 
@@ -35,7 +36,7 @@ body {
     margin: 0;
     overflow: hidden;
 }
-.linkbanner {
+#linkbanner {
     list-style: none;
     display: flex;
     justify-content: space-around;
@@ -52,7 +53,7 @@ body {
     min-height: 120px;
     background-color: white;
 }
-.linkbanner > li > a {
+#linkbanner > li > a {
     padding: 0 8px;
     padding-top: 8px;
     color: black;

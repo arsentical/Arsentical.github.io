@@ -1,3 +1,2 @@
 # hell in a website
-wow, it's actually functional!
-(barely)
+every page is a different style, proving that I am bad at graphic design multiple times over

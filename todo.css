@@ -1,0 +1,36 @@
+@import url("./iosevka.css");
+body {
+    font-family: "Iosevka Web", monospace;
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    overflow-x: hidden;
+}
+h1 {
+    font-weight: 200;
+    font-size: 80px;
+}
+a {
+    color: inherit;
+    text-decoration: overline;
+}
+#fg, #bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+}
+#fg {
+    width: calc(100vw / 3);
+    color: white;
+    background-color: black;
+    overflow: hidden;
+    transition-property: width;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+#bg, #fg-inner {
+    width: 100vw;
+    padding: 10px;
+    box-sizing: border-box;
+}
