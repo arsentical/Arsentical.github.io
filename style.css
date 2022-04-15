@@ -1,12 +1,18 @@
-.banner {
+.scrollbanner {
     /* fuck you */
     background-image: url("./assets/arsentical.png");
-    background-size: contain;
+    background-size: cover;
     height: 100px;
     animation-name: bannerscroll;
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    margin: 10px;
+}
+@media screen and (min-width: 420px) {
+    .scrollbanner {
+        background-size: contain;
+    }
 }
 @keyframes bannerscroll {
     0% {
@@ -15,4 +21,39 @@
     100% {
         background-position: calc(1000px * 100 / 250) 0;
     }
+}
+.video {
+    min-width: 100%;
+    min-height: 100%;
+}
+.videobox {
+    height: calc(100vh - 240px);
+    overflow: hidden;
+
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+.linkbanner {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-family: "Warownia", "Helvetica", sans-serif;
+    font-size: 32px;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 120px;
+    background-color: white;
+}
+.linkbanner > li > a {
+    padding: 0 8px;
+    color: black;
+    text-decoration: overline;
 }
