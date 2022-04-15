@@ -16,10 +16,10 @@
 }
 @keyframes bannerscroll {
     0% {
-        background-position: 0 0;
+        background-position: calc(1000px * 100 / 250) 0;
     }
     100% {
-        background-position: calc(1000px * 100 / 250) 0;
+        background-position: 0 0;
     }
 }
 .video {
@@ -54,6 +54,10 @@ body {
 }
 .linkbanner > li > a {
     padding: 0 8px;
+    padding-top: 8px;
     color: black;
     text-decoration: overline;
+    width: 200px;
+    display: inline-block;
+    text-align: center;
 }
