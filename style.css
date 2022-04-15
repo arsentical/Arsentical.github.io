@@ -1,8 +1,18 @@
-body {
-    background-color: black;
+.banner {
+    /* fuck you */
+    background-image: url("./assets/arsentical.png");
+    background-size: contain;
+    height: 100px;
+    animation-name: bannerscroll;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
-
-p {
-    color: white;
-    text-align: center;
+@keyframes bannerscroll {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(1000px * 100 / 250) 0;
+    }
 }
