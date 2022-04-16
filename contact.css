@@ -62,7 +62,6 @@ li > :first-child:is(:hover, :focus) + :is(.top, .bottom) {
 .top, .bottom {
     pointer-events: none;
     font-size: 160px;
-    display: block !important;
     position: absolute;
     right: 0;
     width: 128px;
@@ -82,4 +81,10 @@ li > :first-child:is(:hover, :focus) + :is(.top, .bottom) {
     height: 64px;
     display: block !important;
     margin-top: -64px;
+}
+
+@media screen and (min-width: 700px) {
+    .top, .bottom {
+        display: block !important;
+    }
 }
