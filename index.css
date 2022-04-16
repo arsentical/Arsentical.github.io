@@ -2,18 +2,13 @@
 #scrollbanner {
     /* fuck you */
     background-image: url("./assets/arsentical.png");
-    background-size: cover;
+    background-size: 400px;
     height: 100px;
     animation-name: bannerscroll;
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     margin: 10px;
-}
-@media screen and (min-width: 420px) {
-    #scrollbanner {
-        background-size: contain;
-    }
 }
 @keyframes bannerscroll {
     0% {

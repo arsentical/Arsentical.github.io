@@ -1,0 +1,46 @@
+@import url("./iosevka.css");
+@import url("./warownia.css");
+
+body {
+    margin: 0;
+    background-color: black;
+}
+#sidebanner {
+    width: 240px;
+    height: 100vh;
+    background-image: url("./assets/nameshift.png");
+    background-size: 240px;
+    animation-name: bannerscroll;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: fixed;
+    left: 30px;
+    top: 0;
+}
+@keyframes bannerscroll {
+    0% {
+        background-position: 0 420px;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+#links {
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: "Warownia", "Helvetica", sans-serif;
+    font-size: 32px;
+
+}
+#links > li > a {
+    display: block;
+    padding: 8px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    width: 100vw;
+    transform: translateX(75vw);
+}
