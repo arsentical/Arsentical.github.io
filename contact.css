@@ -33,14 +33,53 @@ body {
     top: 0;
     font-family: "Warownia", "Helvetica", sans-serif;
     font-size: 32px;
-
+    overflow: hidden;
+    margin: 0;
 }
-#links > li > a {
+li > :first-child {
     display: block;
-    padding: 8px;
     background-color: white;
     color: black;
     text-decoration: none;
+    display: block;
     width: 100vw;
-    transform: translateX(75vw);
+    padding: 9px;
+    transform: translateX(var(--w));
+    transition-property: transform;
+    transition-duration: 300ms;
+    margin-top: 10px;
+}
+li > :first-child:is(:hover, :focus) {
+    transform: translateX(calc(var(--w) - 10vw));
+}
+li > :first-child:focus {
+    outline: 2px dashed white;
+}
+li > :first-child:is(:hover, :focus) + :is(.top, .bottom) {
+    right: 10vw;
+}
+
+.top, .bottom {
+    pointer-events: none;
+    font-size: 160px;
+    display: block !important;
+    position: absolute;
+    right: 0;
+    width: 128px;
+    height: 64px;
+    overflow: hidden;
+    transition-property: right;
+    transition-duration: 300ms;
+    transform: translateY(-64px);
+}
+.top, .bottom > span {
+    color: black;
+    text-align: center;
+    line-height: 88px;
+}
+.bottom > span {
+    width: 128px;
+    height: 64px;
+    display: block !important;
+    margin-top: -64px;
 }
