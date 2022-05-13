@@ -8,8 +8,9 @@ ul {
 .text {
     font-family: "Warownia", "Helvetica", sans-serif;
     font-size: 32px;
-    padding: 16px;
+    padding: 8px;
     margin: 0;
+    line-height: 72px;
 }
 #linegif {
     position: absolute;
