@@ -1,0 +1,46 @@
+@import url("./warownia.css");
+body {
+    margin: 0px;
+}
+ul {
+    list-style: none;
+}
+.text {
+    font-family: "Warownia", "Helvetica", sans-serif;
+    font-size: 32px;
+    padding: 16px;
+    margin: 0;
+}
+#linegif {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    height: 100vh;
+    position: fixed;
+    right: 5vw;
+    z-index: -1;
+}
+.link {
+    font-family: "Warownia", "Helvetica", sans-serif;
+    font-size: 32px;
+    text-decoration: overline;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    line-height: 56px;
+}
+#video {
+    min-height: 100%;
+    object-fit: fill;
+    
+}
+#videobox {
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    z-index: -2;
+    top: 0;
+    
+}
+/* this is the first bit of css I've made without help. it's hell */
