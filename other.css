@@ -29,6 +29,7 @@ ul {
     margin: 0;
     background-color: white;
     line-height: 56px;
+    color: black;
 }
 #video {
     min-height: 100%;
