@@ -21,6 +21,7 @@ ul {
     position: fixed;
     right: 5vw;
     z-index: -1;
+    image-rendering: pixelated;
 }
 .link {
     font-family: "Warownia", "Helvetica", sans-serif;
