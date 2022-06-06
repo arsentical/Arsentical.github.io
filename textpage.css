@@ -1,0 +1,20 @@
+@import url("./warownia.css");
+@import url("./iosevka.css");
+h1 {
+    font-family: "Warownia", "Helvetica", sans-serif;
+}
+p {
+    font-family: "Iosevka Web", monospace;
+    font-weight: 700;
+    color: black;
+}
+ul > li {
+    font-family: "Iosevka Web", monospace;
+    font-weight: 700;
+    color: black;
+}
+a {
+    font-family: "Iosevka Web", monospace;
+    font-weight: 300;
+    color: rgb(128,0,255);
+}
